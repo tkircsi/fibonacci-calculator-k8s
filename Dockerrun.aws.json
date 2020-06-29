@@ -1,23 +1,26 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "containerDefinitations": [
+  "containerDefinitions": [
     {
       "name": "client",
       "image": "tkircsi/complex-client",
       "hostname": "client",
-      "essential": false
+      "essential": false,
+      "memory": 256
     },
     {
       "name": "server",
       "image": "tkircsi/complex-server",
       "hostname": "api",
-      "essential": false
+      "essential": false,
+      "memory": 256
     },
     {
       "name": "worker",
       "image": "tkircsi/complex-worker",
       "hostname": "worker",
-      "essential": false
+      "essential": false,
+      "memory": 256
     },
     {
       "name": "nginx",
@@ -30,7 +33,8 @@
           "containerPort": 80
         }
       ],
-      "links": ["client", "server"]
+      "links": ["client", "server"],
+      "memory": 256
     }
   ]
 }

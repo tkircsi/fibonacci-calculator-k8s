@@ -1,0 +1,21 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon"
+  },
+  "keywords": [],
+  "author": "Tibor Kircsi",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "@types/redis": "^2.8.22",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "redis": "^3.0.2"
+  }
+}

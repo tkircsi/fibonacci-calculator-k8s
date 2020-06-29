@@ -6,7 +6,7 @@
       "image": "tkircsi/complex-client",
       "hostname": "client",
       "essential": false,
-      "memory": 256
+      "memory": 128
     },
     {
       "name": "server",

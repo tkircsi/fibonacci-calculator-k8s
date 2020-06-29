@@ -1,0 +1,25 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t tkircsi/complex-client -f ./client/Dockerfile.dev ./client
+  
+script:
+  - docker run -e CI=true tkircsi/complex-client npm test
+
+after_success:
+  - docker build -t tkircsi/complex-client ./client
+  - docker build -t tkircsi/complex-nginx ./nginx
+  - docker build -t tkircsi/complex-server ./server
+  - docker build -t tkircsi/complex-worker ./worker
+
+  # Log into the Docker CLI
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Push images to DockerHub
+  - docker push tkircsi/complex-client
+  - docker push tkircsi/complex-nginx
+  - docker push tkircsi/complex-server
+  - docker push tkircsi/complex-worker

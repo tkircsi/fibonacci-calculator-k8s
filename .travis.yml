@@ -16,7 +16,7 @@ after_success:
   - docker build -t tkircsi/complex-worker ./worker
 
   # Log into the Docker CLI
-  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Push images to DockerHub
   - docker push tkircsi/complex-client

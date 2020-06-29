@@ -23,3 +23,16 @@ after_success:
   - docker push tkircsi/complex-nginx
   - docker push tkircsi/complex-server
   - docker push tkircsi/complex-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: complex-app
+  env: ComplexApp-env
+  bucket_name: elasticbeanstalk-eu-central-1-602441236330
+  bucket_path: complex-app
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  

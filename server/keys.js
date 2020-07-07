@@ -1,5 +1,5 @@
 module.exports = {
-  serverPort: process.env.PORT,
+  serverPort: process.env.PORT || 5000,
   redisHost: process.env.REDIS_HOST,
   redisPort: process.env.REDIS_PORT,
   pgUser: process.env.PGUSER,

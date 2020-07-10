@@ -18,20 +18,20 @@ const pgClient = new Pool({
   database: keys.pgDatabase,
 });
 
-pgClient.query('CREATE TABLE IF NOT EXISTS values (number INT)', (err, res) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log('PG init table');
-});
-
-// pgClient.on('connect', () => {
-//   console.log('pgClient connect');
-//   pgClient
-//     .query('CREATE TABLE IF NOT EXISTS values (number INT)')
-//     .catch((err) => console.log(err));
+// pgClient.query('CREATE TABLE IF NOT EXISTS values (number INT)', (err, res) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   console.log('PG init table');
 // });
+
+pgClient.on('connect', () => {
+  console.log('pgClient connect');
+  pgClient
+    .query('CREATE TABLE IF NOT EXISTS values (number INT)')
+    .catch((err) => console.log(err));
+});
 
 // Redis setup
 const redisClient = redis.createClient({
